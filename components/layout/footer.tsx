@@ -1,10 +1,7 @@
-import { Mail } from "lucide-react";
+import { Mail, Send } from "lucide-react";
 import { GithubIcon } from "@/components/icons/github-icon";
 import { Container } from "@/components/ui/container";
-
-// TODO: заменить на реальный профиль GitHub перед публикацией
-const GITHUB_URL = "https://github.com/yourusername";
-const CONTACT_EMAIL = "loketery@gmail.com";
+import { CONTACT_EMAIL, GITHUB_URL, TELEGRAM_HANDLE, TELEGRAM_URL } from "@/lib/contact";
 
 export function Footer() {
   return (
@@ -20,6 +17,15 @@ export function Footer() {
             className="transition-colors hover:text-foreground"
           >
             <GithubIcon className="h-5 w-5" />
+          </a>
+          <a
+            href={TELEGRAM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Написать в Telegram ${TELEGRAM_HANDLE}`}
+            className="transition-colors hover:text-foreground"
+          >
+            <Send className="h-5 w-5" />
           </a>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
