@@ -58,3 +58,33 @@ body {
 * {
   border-color: var(--color-border);
 }
+
+.spotlight-grid {
+  background-image: radial-gradient(
+    circle,
+    color-mix(in oklch, var(--foreground) 16%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  mask-image: radial-gradient(
+    520px circle at var(--spotlight-x, 50%) var(--spotlight-y, 10%),
+    black,
+    transparent 80%
+  );
+  -webkit-mask-image: radial-gradient(
+    520px circle at var(--spotlight-x, 50%) var(--spotlight-y, 10%),
+    black,
+    transparent 80%
+  );
+  opacity: 0.6;
+}
+
+.spotlight-glow {
+  background: radial-gradient(
+    480px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    color-mix(in oklch, var(--accent) 24%, transparent),
+    transparent 70%
+  );
+  opacity: var(--spotlight-opacity, 0);
+  transition: opacity 400ms ease;
+}
