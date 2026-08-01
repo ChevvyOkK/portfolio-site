@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { SKILL_CATEGORY_LABELS, SKILLS, type SkillCategory } from "@/content/skills";
 
 export const metadata: Metadata = {
-  title: "Обо мне — Портфолио разработчика",
+  title: "Обо мне",
 };
 
 const CATEGORY_ORDER: SkillCategory[] = ["language", "framework", "database", "tool"];

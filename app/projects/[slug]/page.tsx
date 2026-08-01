@@ -20,7 +20,12 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   const { slug } = await params;
   const project = PROJECTS.find((p) => p.slug === slug);
   if (!project) return {};
-  return { title: `${project.title} — Портфолио разработчика` };
+
+  return {
+    title: project.title,
+    description: project.problem,
+    openGraph: { title: project.title, description: project.problem },
+  };
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

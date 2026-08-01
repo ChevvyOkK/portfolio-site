@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { PROJECTS } from "@/content/projects";
 
 export const metadata: Metadata = {
-  title: "Проекты — Портфолио разработчика",
+  title: "Проекты",
 };
 
 export default function ProjectsPage() {

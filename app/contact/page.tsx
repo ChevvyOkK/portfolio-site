@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/container";
 import { CONTACT_EMAIL, GITHUB_URL, TELEGRAM_HANDLE, TELEGRAM_URL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Контакты — Портфолио разработчика",
+  title: "Контакты",
 };
 
 const CONTACT_METHODS = [

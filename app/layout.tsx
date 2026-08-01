@@ -4,6 +4,7 @@ import "./globals.css";
 import { PerspectiveProvider } from "@/components/perspective/perspective-provider";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const geistSans = Geist({
@@ -17,9 +18,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Портфолио разработчика",
-  description:
-    "Персональный сайт-портфолио: проекты, архитектура и техническая экспертиза разработчика.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    type: "website",
+    locale: "ru_RU",
+    siteName: SITE_NAME,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({
@@ -38,9 +54,17 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       </head>
       <body className="flex min-h-full flex-col">
+        <a
+          href="#main-content"
+          className="bg-accent text-accent-foreground focus-visible:ring-ring sr-only rounded-md px-4 py-2 text-sm font-medium focus-visible:not-sr-only focus-visible:absolute focus-visible:top-4 focus-visible:left-4 focus-visible:z-50 focus-visible:outline-none"
+        >
+          Перейти к содержимому
+        </a>
         <PerspectiveProvider>
           <Header />
-          <main className="flex flex-1 flex-col">{children}</main>
+          <main id="main-content" className="flex flex-1 flex-col">
+            {children}
+          </main>
           <Footer />
         </PerspectiveProvider>
       </body>
