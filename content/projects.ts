@@ -122,6 +122,68 @@ export const PROJECTS: Project[] = [
     screenshots: [{ src: "/screenshots/evosim/simulation.jpg", alt: "Симуляция популяции существ" }],
   },
   {
+    slug: "aether-agency",
+    title: "AetherAgency",
+    type: "site",
+    status: "done",
+    pitch: {
+      engineer:
+        "Одностраничник на чистом HTML5/CSS3/vanilla JS без единой зависимости: canvas-частицы, IntersectionObserver-анимации, тема на CSS-переменных.",
+      recruiter:
+        "Показывает, что чистый фронтенд-фундамент — без фреймворков — держится на понимании браузерных API, а не на библиотеках за них.",
+      client:
+        "Лендинг диджитал-студии: портфолио кейсов, калькулятор стоимости проекта в реальном времени и форма связи.",
+    },
+    problem:
+      "Хотелось собрать сайт-визитку агентства с ощущением premium-продукта — без единого килобайта фреймворка, только нативные браузерные возможности.",
+    role: "Дизайн, вёрстка и вся интерактивность целиком — с нуля на HTML/CSS/JS.",
+    stack: ["HTML5", "CSS3", "Vanilla JavaScript", "Canvas API"],
+    highlights: [
+      "Интерактивный canvas-фон из частиц, реагирующий на курсор, без сторонних библиотек",
+      "Scroll-reveal анимации на IntersectionObserver с каскадной задержкой по сетке",
+      "Калькулятор стоимости проекта — живой пересчёт суммы и сроков от выбранных опций",
+    ],
+    links: {
+      github: "https://github.com/ChevvyOkK/aether-agency",
+      demo: "https://aether-agency-green.vercel.app",
+    },
+    screenshots: [
+      { src: "/screenshots/aether-agency/hero.jpg", alt: "Главный экран AetherAgency" },
+      { src: "/screenshots/aether-agency/services.jpg", alt: "Секция услуг агентства" },
+    ],
+  },
+  {
+    slug: "nexuspc",
+    title: "NexusPC",
+    type: "site",
+    status: "done",
+    pitch: {
+      engineer:
+        "SPA-прототип интернет-магазина на чистом vanilla JS: каталог с фильтрами, корзина на localStorage, поиск с автодополнением — без единого фреймворка.",
+      recruiter:
+        "Полноценная логика e-commerce (корзина, промокоды, фильтрация, чекаут) реализована руками, без Redux/React — виден фундамент под любым фреймворком.",
+      client:
+        "Магазин компьютерного железа: каталог, карточка товара, корзина и оформление заказа — весь путь покупателя.",
+    },
+    problem:
+      "E-commerce обычно закрывают готовым фреймворком или платформой. Хотелось разобрать этот путь на составляющие и собрать его самому: state, персистентность, синхронизация UI.",
+    role: "Архитектура данных, вся клиентская логика каталога/корзины/поиска и вёрстка целиком.",
+    stack: ["HTML5", "CSS3", "Vanilla JavaScript", "localStorage"],
+    highlights: [
+      "Каталог с фильтрами по категории, бренду, цене и наличию — без перезагрузки страницы",
+      "Debounced-поиск с выпадающим автодополнением по названию, бренду и категории",
+      "Корзина на localStorage с промокодами и пересчётом итога в реальном времени",
+    ],
+    links: {
+      github: "https://github.com/ChevvyOkK/nexuspc",
+      demo: "https://nexuspc-kappa.vercel.app",
+    },
+    screenshots: [
+      { src: "/screenshots/nexuspc/catalog.jpg", alt: "Каталог товаров с фильтрами" },
+      { src: "/screenshots/nexuspc/product.jpg", alt: "Страница товара" },
+    ],
+  },
+  {
     slug: "portfolio-site",
     title: "Этот сайт",
     type: "site",
