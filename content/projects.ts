@@ -50,7 +50,10 @@ export const PROJECTS: Project[] = [
       "Полнотекстовый поиск по заметкам и задачам через SQLite FTS5",
       "Undo/redo на уровне всего приложения, а не отдельных полей",
     ],
-    links: {},
+    links: {
+      github: "https://github.com/ChevvyOkK/devflow-studio",
+      demo: "https://github.com/ChevvyOkK/devflow-studio/releases/tag/v0.1.0",
+    },
     screenshots: [],
   },
   {
@@ -75,7 +78,10 @@ export const PROJECTS: Project[] = [
       "JWT-авторизация с httpOnly-cookie и refresh-токенами",
       "Rate limiting и валидация на клиенте и сервере одной общей Zod-схемой",
     ],
-    links: {},
+    links: {
+      github: "https://github.com/ChevvyOkK/skillforge",
+      demo: "https://skillforge-rouge-six.vercel.app",
+    },
     screenshots: [],
   },
   {
@@ -100,7 +106,10 @@ export const PROJECTS: Project[] = [
       "Пространственный quad-tree для зрения и коллизий тысяч агентов в реальном времени",
       "Живые графики популяции и генома отдельного существа",
     ],
-    links: {},
+    links: {
+      github: "https://github.com/ChevvyOkK/evosim",
+      demo: "https://evosim-chevvy-okda.vercel.app",
+    },
     screenshots: [],
   },
   {
@@ -125,7 +134,9 @@ export const PROJECTS: Project[] = [
       "Переключатель перспективы меняет акценты контента, а не только цвет темы",
       "Тема без вспышки неправильного варианта при загрузке",
     ],
-    links: {},
+    links: {
+      github: "https://github.com/ChevvyOkK/portfolio-site",
+    },
     screenshots: [],
   },
 ];
