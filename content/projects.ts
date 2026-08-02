@@ -54,7 +54,12 @@ export const PROJECTS: Project[] = [
       github: "https://github.com/ChevvyOkK/devflow-studio",
       demo: "https://github.com/ChevvyOkK/devflow-studio/releases/tag/v0.1.0",
     },
-    screenshots: [],
+    screenshots: [
+      {
+        src: "/screenshots/devflow-studio/main-window.png",
+        alt: "Главное окно: задачи, донат-диаграмма прогресса, панель поиска",
+      },
+    ],
   },
   {
     slug: "skillforge",
@@ -82,7 +87,11 @@ export const PROJECTS: Project[] = [
       github: "https://github.com/ChevvyOkK/skillforge",
       demo: "https://skillforge-rouge-six.vercel.app",
     },
-    screenshots: [],
+    screenshots: [
+      { src: "/screenshots/skillforge/roadmaps-list.jpg", alt: "Список дорожных карт" },
+      { src: "/screenshots/skillforge/roadmap-detail.jpg", alt: "Детальная страница дорожной карты" },
+      { src: "/screenshots/skillforge/public-roadmap.jpg", alt: "Публичная страница дорожной карты" },
+    ],
   },
   {
     slug: "evosim",
@@ -110,7 +119,7 @@ export const PROJECTS: Project[] = [
       github: "https://github.com/ChevvyOkK/evosim",
       demo: "https://evosim-chevvy-okda.vercel.app",
     },
-    screenshots: [],
+    screenshots: [{ src: "/screenshots/evosim/simulation.jpg", alt: "Симуляция популяции существ" }],
   },
   {
     slug: "portfolio-site",

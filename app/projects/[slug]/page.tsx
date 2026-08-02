@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -78,6 +79,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </ul>
           </section>
+
+          {project.screenshots.length > 0 && (
+            <section>
+              <h2 className="text-sm font-semibold tracking-widest text-muted uppercase">
+                Скриншоты
+              </h2>
+              <div className="mt-3 grid gap-4 sm:grid-cols-2">
+                {project.screenshots.map((screenshot) => (
+                  <div
+                    key={screenshot.src}
+                    className="overflow-hidden rounded-lg border border-border"
+                  >
+                    <Image
+                      src={screenshot.src}
+                      alt={screenshot.alt}
+                      width={1280}
+                      height={800}
+                      className="h-auto w-full"
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
 
         <aside className="space-y-6">
