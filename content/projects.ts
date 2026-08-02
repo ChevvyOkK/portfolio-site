@@ -1,6 +1,13 @@
 import type { Perspective } from "@/lib/perspective";
 
-export type ProjectType = "desktop" | "web-service" | "simulation" | "site" | "cli" | "game";
+export type ProjectType =
+  | "desktop"
+  | "web-service"
+  | "simulation"
+  | "site"
+  | "cli"
+  | "game"
+  | "monitoring";
 export type ProjectStatus = "in-progress" | "done";
 
 export type Project = {
@@ -28,6 +35,7 @@ export const PROJECT_TYPE_LABELS: Record<ProjectType, string> = {
   site: "Сайт",
   cli: "CLI-инструмент",
   game: "Игра",
+  monitoring: "Мониторинг",
 };
 
 export const PROJECTS: Project[] = [
@@ -279,5 +287,34 @@ export const PROJECTS: Project[] = [
     screenshots: [
       { src: "/screenshots/swarm-arena/gameplay.jpg", alt: "Игровой процесс SwarmArena" },
     ],
+  },
+  {
+    slug: "statusforge",
+    title: "StatusForge",
+    type: "monitoring",
+    status: "done",
+    pitch: {
+      engineer:
+        "Живой дашборд статуса всех сервисов этого портфолио — без сервера и без базы данных: GitHub Actions по расписанию пингует каждый сервис и коммитит результат, статика читает файл прямо из репозитория.",
+      recruiter:
+        "Не ещё один CRUD, а честная демонстрация systems thinking — построен на выводах из реальных инцидентов, случившихся при деплое остальных проектов этого портфолио.",
+      client:
+        "Одна страница показывает, что все сайты и сервисы портфолио прямо сейчас работают — и как быстро отвечают.",
+    },
+    problem:
+      "Сервис, который мониторит другие сервисы, сам является ещё одним сервисом, которому тоже нужен мониторинг — особенно на бесплатном тарифе, где он точно так же засыпает через 15 минут простоя. Хотелось решение, у которого в принципе нечему падать независимо от GitHub.",
+    role: "Архитектура целиком: скрипт-пинг, GitHub Actions как cron, git как хранилище, статический дашборд.",
+    stack: ["Node.js", "GitHub Actions", "Vanilla JavaScript"],
+    highlights: [
+      "Ноль инфраструктуры: GitHub Actions пингует сервисы каждые ~10 минут и коммитит data/history.json, дашборд читает его напрямую с raw.githubusercontent.com — нет ни сервера, ни базы данных, которые могли бы сами упасть",
+      "Таймаут пинга — 60 секунд, а не типичные несколько: SkillForge API и SwarmArena-сервер живут на бесплатном Render, который засыпает от простоя и просыпается до ~50 секунд — короткий таймаут принял бы это состояние за настоящий отказ",
+      "Любой ответ сервера, включая 401/404, засчитывается как «работает» — это доказывает, что сервер жив, а не что каждый его маршрут отдаёт 200",
+      "Данные накапливаются с момента первого запуска — дашборд честно показывает «истории пока мало», а не рисует процент аптайма из одной точки",
+    ],
+    links: {
+      github: "https://github.com/ChevvyOkK/statusforge",
+      demo: "https://statusforge-one.vercel.app",
+    },
+    screenshots: [{ src: "/screenshots/statusforge/dashboard.jpg", alt: "Дашборд StatusForge" }],
   },
 ];
