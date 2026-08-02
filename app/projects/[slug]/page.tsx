@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
+import { ScreenshotLightbox } from "@/components/projects/screenshot-lightbox";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -85,22 +85,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <h2 className="text-sm font-semibold tracking-widest text-muted uppercase">
                 Скриншоты
               </h2>
-              <div className="mt-3 grid gap-4 sm:grid-cols-2">
-                {project.screenshots.map((screenshot) => (
-                  <div
-                    key={screenshot.src}
-                    className="overflow-hidden rounded-lg border border-border"
-                  >
-                    <Image
-                      src={screenshot.src}
-                      alt={screenshot.alt}
-                      width={1280}
-                      height={800}
-                      className="h-auto w-full"
-                    />
-                  </div>
-                ))}
-              </div>
+              <ScreenshotLightbox screenshots={project.screenshots} />
             </section>
           )}
         </div>

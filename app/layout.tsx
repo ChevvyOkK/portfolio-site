@@ -4,6 +4,7 @@ import "./globals.css";
 import { PerspectiveProvider } from "@/components/perspective/perspective-provider";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { PageTransition } from "@/components/motion/page-transition";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
@@ -63,7 +64,7 @@ export default function RootLayout({
         <PerspectiveProvider>
           <Header />
           <main id="main-content" className="flex flex-1 flex-col">
-            {children}
+            <PageTransition>{children}</PageTransition>
           </main>
           <Footer />
         </PerspectiveProvider>
