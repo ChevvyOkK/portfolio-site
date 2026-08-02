@@ -1,6 +1,6 @@
 import type { Perspective } from "@/lib/perspective";
 
-export type ProjectType = "desktop" | "web-service" | "simulation" | "site";
+export type ProjectType = "desktop" | "web-service" | "simulation" | "site" | "cli";
 export type ProjectStatus = "in-progress" | "done";
 
 export type Project = {
@@ -25,6 +25,7 @@ export const PROJECT_TYPE_LABELS: Record<ProjectType, string> = {
   "web-service": "Веб-сервис",
   simulation: "Симуляция",
   site: "Сайт",
+  cli: "CLI-инструмент",
 };
 
 export const PROJECTS: Project[] = [
@@ -197,7 +198,7 @@ export const PROJECTS: Project[] = [
       engineer:
         "Next.js 16 + TypeScript + Tailwind CSS 4, курсор-реактивный spotlight, переключатель перспективы, деплой на Vercel.",
       recruiter:
-        "Витрина остальных пяти проектов — и сам по себе пример чистой фронтенд-архитектуры и внимания к деталям.",
+        "Витрина остальных шести проектов — и сам по себе пример чистой фронтенд-архитектуры и внимания к деталям.",
       client:
         "Сайт подстраивается под то, кто на него смотрит — рекрутёр, техлид или заказчик видят разные акценты.",
     },
@@ -213,6 +214,35 @@ export const PROJECTS: Project[] = [
     ],
     links: {
       github: "https://github.com/ChevvyOkK/portfolio-site",
+    },
+    screenshots: [],
+  },
+  {
+    slug: "envcheck",
+    title: "envcheck",
+    type: "cli",
+    status: "done",
+    pitch: {
+      engineer:
+        "CLI на Rust: сверяет .env-файл или переменные окружения процесса со схемой в духе .env.example, проверяет и наличие, и тип значения (url/number/bool).",
+      recruiter:
+        "Родился из настоящего часа отладки в этом же портфолио — инструмент, написанный не для резюме, а потому что он реально был нужен.",
+      client:
+        "Ловит неправильно настроенный сервер до того, как это увидят пользователи — а не после.",
+    },
+    problem:
+      "При деплое SkillForge (другого проекта этого портфолио) я потерял время на две ошибки конфигурации, которые падали абсолютно молча: фронтенд не знал адрес бэкенда, а бэкенд не знал, каким доменам доверять по CORS. Ничего не крашилось — приложение просто не работало, без единой подсказки почему.",
+    role: "Идея, архитектура и реализация целиком — парсер схемы, сравнение значений, цветной вывод в терминал.",
+    stack: ["Rust", "Cargo", "GitHub Actions"],
+    highlights: [
+      "Формат схемы — расширение привычного .env.example: пустое значение = обязательно, значение по умолчанию = необязательно",
+      "Проверка типа значения через аннотацию в комментарии — # type:url понимает не только http(s), но и postgres://, redis:// и любые scheme://",
+      "19 unit-тестов, cargo fmt и clippy -D warnings в CI на каждый пуш",
+      "При первом прогоне на собственном примере поймал реальный баг в самом себе — слишком строгую проверку url, которая бы дала ложное срабатывание на DATABASE_URL",
+    ],
+    links: {
+      github: "https://github.com/ChevvyOkK/envcheck",
+      demo: "https://github.com/ChevvyOkK/envcheck/releases/tag/v0.1.0",
     },
     screenshots: [],
   },
