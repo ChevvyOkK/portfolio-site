@@ -111,7 +111,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     rel="noopener noreferrer"
                     className={cn(buttonVariants({ variant: "secondary", size: "sm" }))}
                   >
-                    Репозиторий на GitHub
+                    {project.links.githubClient ? "Сервер на GitHub" : "Репозиторий на GitHub"}
+                  </a>
+                )}
+                {project.links.githubClient && (
+                  <a
+                    href={project.links.githubClient}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(buttonVariants({ variant: "secondary", size: "sm" }))}
+                  >
+                    Клиент на GitHub
                   </a>
                 )}
                 {project.links.demo && (

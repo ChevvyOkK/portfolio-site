@@ -1,6 +1,6 @@
 import type { Perspective } from "@/lib/perspective";
 
-export type ProjectType = "desktop" | "web-service" | "simulation" | "site" | "cli";
+export type ProjectType = "desktop" | "web-service" | "simulation" | "site" | "cli" | "game";
 export type ProjectStatus = "in-progress" | "done";
 
 export type Project = {
@@ -15,6 +15,7 @@ export type Project = {
   highlights: string[];
   links: {
     github?: string;
+    githubClient?: string;
     demo?: string;
   };
   screenshots: { src: string; alt: string }[];
@@ -26,6 +27,7 @@ export const PROJECT_TYPE_LABELS: Record<ProjectType, string> = {
   simulation: "Симуляция",
   site: "Сайт",
   cli: "CLI-инструмент",
+  game: "Игра",
 };
 
 export const PROJECTS: Project[] = [
@@ -245,5 +247,37 @@ export const PROJECTS: Project[] = [
       demo: "https://github.com/ChevvyOkK/envcheck/releases/tag/v0.1.0",
     },
     screenshots: [],
+  },
+  {
+    slug: "swarm-arena",
+    title: "SwarmArena",
+    type: "game",
+    status: "done",
+    pitch: {
+      engineer:
+        "Real-time мультиплеер в браузере: авторитетный игровой сервер на Rust/axum с WebSocket, 20 тиков в секунду, canvas-клиент без единого фреймворка.",
+      recruiter:
+        "Единственный проект в портфолио с настоящим real-time-протоколом и сетевой архитектурой клиент-сервер, а не просто REST API.",
+      client:
+        "Заходишь на сайт, двигаешь мышью — существо растёт, поедая точки и соперников поменьше, прямо как в agar.io.",
+    },
+    problem:
+      "Все остальные проекты портфолио — это запрос-ответ (REST) или локальная симуляция без сети вообще. Хотелось построить то, чего там не было: сервер, авторитетный над состоянием игры, синхронизирующий позиции десятков клиентов много раз в секунду, с интерполяцией на клиенте, чтобы движение выглядело плавным при частоте обновлений сети всего 20 Гц.",
+    role: "Архитектура сервера и протокола целиком, игровая логика, canvas-рендер и деплой обеих частей.",
+    stack: ["Rust", "axum", "tokio", "WebSocket", "Docker", "Vanilla JavaScript"],
+    highlights: [
+      "Авторитетный сервер: клиент только предлагает, куда хочет двигаться, всю физику и решение «кто кого съел» считает сервер — недоверие к клиенту по умолчанию",
+      "Столкновения игрок-игрок — намеренно O(n²), а не quad-tree как в EvoSim: для реалистичного числа одновременных игроков это проще и быстрее, чем усложнять код ради масштаба, которого никогда не будет",
+      "Поймал реальный баг сериализации: serde's rename_all на enum переименовывает только теги вариантов, а не поля внутри них — все Input-сообщения от клиента молча отбрасывались, пока не добавил rename_all_fields и тесты на буквальный JSON",
+      "Docker-деплой на Render — впервые в портфолио, вместо голословного упоминания в списке навыков",
+    ],
+    links: {
+      github: "https://github.com/ChevvyOkK/swarm-arena-server",
+      githubClient: "https://github.com/ChevvyOkK/swarm-arena-client",
+      demo: "https://swarm-arena-client-am3r0wwh7-chevvy-okda.vercel.app",
+    },
+    screenshots: [
+      { src: "/screenshots/swarm-arena/gameplay.jpg", alt: "Игровой процесс SwarmArena" },
+    ],
   },
 ];
