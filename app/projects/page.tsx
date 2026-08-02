@@ -13,8 +13,8 @@ export default function ProjectsPage() {
       <p className="text-sm font-medium tracking-widest text-muted uppercase">Проекты</p>
       <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Все проекты</h1>
       <p className="mt-3 max-w-xl text-muted">
-        Четыре проекта на четырёх разных стеках — от нативного десктопа до симуляции с эволюционным
-        ИИ.
+        {PROJECTS.length} проектов на разных стеках — от нативного десктопа до симуляции с
+        эволюционным ИИ.
       </p>
 
       <div className="mt-10">
