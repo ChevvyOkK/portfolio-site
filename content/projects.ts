@@ -317,4 +317,33 @@ export const PROJECTS: Project[] = [
     },
     screenshots: [{ src: "/screenshots/statusforge/dashboard.jpg", alt: "Дашборд StatusForge" }],
   },
+  {
+    slug: "contextguard",
+    title: "ContextGuard",
+    type: "cli",
+    status: "done",
+    pitch: {
+      engineer:
+        "CLI на Rust, который читает JSONL-транскрипты сессий Claude Code прямо с диска, агрегирует настоящие usage-блоки (input/output/cache-write/cache-read), считает стоимость по прайс-таблице и находит два типичных источника лишних трат: низкий cache-hit rate и раздутый CLAUDE.md.",
+      recruiter:
+        "Не одна демка, а связка из четырёх репозиториев — CLI, API на NestJS, дашборд на Next.js и IDE-плагин — доведённая до реально задеплоенного сервиса с базой данных и биллингом на Stripe.",
+      client:
+        "Показывает, куда именно уходят токены при работе с Claude Code, и что можно исправить, чтобы платить меньше — без отправки кода или переписки куда-либо.",
+    },
+    problem:
+      "Инструменты вроде Claude Code берут плату за токены, но не показывают, куда они делись — только сумму в конце месяца. Хотелось разложить трату по сессиям и по причинам: раздутые Read, промахи кэша, слишком общий CLAUDE.md, который целиком уходит в каждый запрос.",
+    role: "Архитектура и реализация всех четырёх частей: парсер транскриптов и прайсинг на Rust, API приёма метрик и биллинга на NestJS/Prisma, дашборд на Next.js, деплой каждой части (Vercel, Render, Postgres).",
+    stack: ["Rust", "NestJS", "Prisma", "PostgreSQL", "Next.js", "Tailwind", "Stripe"],
+    highlights: [
+      "Приватность по умолчанию: парсится только числовые usage-поля и имена tool_use — код и текст промптов никогда не читаются и не покидают диск; единственный сетевой вызов вообще — опциональный флаг --push",
+      "CLAUDE.md bloat-check — это прозрачное правило (порог строк + список типовых общих фраз), а не решение через LLM: предсказуемая эвристика лучше непрозрачного «AI считает файл плохим»",
+      "При первом реальном деплое NestJS API на Render поймал два бага, невидимых в dev-режиме под nest start (webpack): без esModuleInterop собранный `new Stripe(...)` резолвился в несуществующий `stripe_1.default`, а сам клиент Stripe падал в конструкторе на пустом ключе — оба всплыли только на продакшен-сборке tsc",
+      "`--push` отправляет по одной строке на календарный день — счётчики токенов по категориям и оценку стоимости, — и всё это валидируется схемой на входе в API, а не просто принимается на веру",
+    ],
+    links: {
+      github: "https://github.com/ChevvyOkK/contextguard",
+      demo: "https://contextguard-web.vercel.app",
+    },
+    screenshots: [{ src: "/screenshots/contextguard/dashboard.jpg", alt: "Дашборд ContextGuard" }],
+  },
 ];
